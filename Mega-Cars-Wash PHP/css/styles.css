@@ -1,0 +1,341 @@
+/* Estilos generales */
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+/* ---------------------------------------- */
+
+/* Página inicio */
+
+.head-son nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.head-son nav a {
+  margin-right: 1px solid #777;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding-right: 20px; 
+}
+
+.head-son nav a:last-of-type {
+  border-right: none;
+}
+
+.head-son nav a:not(:first-child) {
+  margin-right: 20px;
+}
+
+.head-son nav a:hover {
+  color: #a58506; 
+}
+
+.head-son {
+  background-color: #393737;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.logotipo {
+  height: 50px;
+}
+
+.login-button {
+  background-color: rgb(22, 215, 48);
+  color: white;
+  margin-left: 20px;
+  border-radius: 25px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Apartado de secciones */
+.info-buttons {
+  background-color: #5AD678;
+  color: white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.fondoCarro {
+  background-image: url('../src/images/bg-header.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.fondoCarro h1 {
+  color: #fff;
+  font-size: 4rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.fondoCarro p {
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  font-size: 1.2rem;  
+}
+
+
+
+.fondoREs {
+  background-image: url('../src/images/Restaurant-mcw-image.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.fondoREs h1 {
+  color: #fff;
+  font-size: 4rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.fondoREs p {
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  font-size: 1.2rem;  
+}
+
+.store-mcw {
+  background-color: #393737;
+  color: #fff;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+.mcw {
+  background-color: #969696;
+  color: #000000;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+.restaurant-mcw {
+  background-color: #969696;
+  color: #000000;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+.store-mcw {
+  place-items: center; 
+}
+
+.mcw {
+  place-items: center;
+} 
+
+.restaurant-mcw  {
+  place-items: center;
+}
+
+/* ---------------------------------------- */
+
+/* Página sobre nosotros */
+
+.info-history {
+  background-color: green;
+  color: white;
+  padding: 20px;
+}
+
+
+/* Página contactos */
+
+.info-contacts {
+  background-color: green;
+  color: white;
+  padding: 20px;
+}
+
+
+/* ---------------------------------------- */
+
+/* Pie de página */
+
+footer {
+  background-color: #393737;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.links-footer {
+  color: white;
+}
+
+/* ---------------------------------------- */
+
+/* fondo 2 */
+.fondo2 {
+  width: 90%;
+  height: 500px;
+  background: url("Bg-img.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+
+
+/* boton */
+button {
+  background-color: #F71919;
+  color: white;
+  border-radius: 25px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* secciones */
+
+
+.boxpag1 {
+  background-color: #ffffff;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* menu */
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  margin: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+.locatios {
+  background-color: #dbc8c8;
+  padding: 20px;
+  padding-right: 50px;
+}
+
+.locatios {
+  display: flex;
+}
+
+.info-locations {
+  flex: 1;
+
+}
+
+.info-locations h2 {
+  margin-bottom: 20px;  
+}
+
+.img-locations {
+  margin-left: auto;
+  text-align: right; 
+  flex: 1;
+}
+
+.img-ubications {
+  max-width: 200px;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+/* Estilos para pantallas pequeñas */
+@media screen and (max-width: 767px) {
+  body {
+    font-size: 14px;
+  }
+
+  .seccion {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+/* Estilos para pantallas medianas */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    font-size: 16px;
+  }
+
+  .seccion {
+
+    width: 50%;
+    padding: 40px;
+  }
+}
+
+/* Estilos para pantallas grandes */
+@media screen and (min-width: 1024px) {
+  body {
+    font-size: 18px;
+  }
+
+  .seccion {
+    width: 33.33%;
+    padding: 60px;
+  }
+}

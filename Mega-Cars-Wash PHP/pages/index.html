@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase auth</title>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+  <!-- toastify -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <!-- custom css -->
+  <!--   <link rel="stylesheet" href="../css/main.css"> -->
+  <script src="main.js" type="module"></script>
+  <script src="../app/index.js" type="module"></script>
+
+  <style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url("../src/layered-waves-haikei.svg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    form {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .posts {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .posts li {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: aqua;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 4px;
+      transition: all 0.2s ease-in-out;
+      display: inline-block;
+      margin-left: auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    a:hover {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-4px);
+    }
+
+  </style>
+</head>
+
+<body id="index">
+  <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+    <a href="../index.html">" Salir "</a>
+    <div class="container">
+      <a class="navbar-brand" href="#">Firebase App</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item logged-out">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#registrarModal">Logear</a>
+          </li>
+          <li class="nav-item logged-out">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#salirModal">Registrar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- esto es pa mostrar a los que no son admins las publicaciones -->
+  <div class="container p-4">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <ul class="list-group posts"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- logear Modal -->
+  <div class="modal fade" id="registrarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Logear</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form id="login-form" method="POST" action="../app/login.php">
+            <h2>Iniciar sesión</h2>
+            <div class="mb-3">
+              <label for="login-email" class="form-label">Email</label>
+              <input type="email" id="login-email" name="login-email" class="form-control" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+              <label for="login-password" class="form-label">Password</label>
+              <input type="password" id="login-password" name="login-password" class="form-control" placeholder="******"
+                required>
+            </div>
+            <button type="submit" name="login-submit" class="btn btn-primary">Iniciar sesión</button>
+          </form>
+
+          <button type="button" id="googleLogin" class="btn btn-light mb-4">Google</button>
+
+          <button type="button" id="facebookLogin" class="btn btn-primary mb-4">Facebook</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- registrar Modal -->
+  <div class="modal fade" id="salirModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar</h1>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form id="signup-form" method="POST" action="../app/registro.php">
+            <h2>Registrarse</h2>
+            <div class="mb-3">
+              <label for="signup-email" class="form-label">Email</label>
+              <input type="email" id="signup-email" name="signup-email" class="form-control" placeholder="Email"
+                required>
+            </div>
+            <div class="mb-3">
+              <label for="signup-password" class="form-label">Password</label>
+              <input type="password" id="signup-password" name="signup-password" class="form-control"
+                placeholder="******" required>
+            </div>
+            <button type="submit" name="signup-submit" class="btn btn-primary">Registrarse</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- esto es pa agregar las publicaciones -->
+  <form id="task-form">
+
+    <label for="title">Title</label>
+    <input type="text" placeholder="Task Title" id="task-title">
+
+    <label for="description">Description</label>
+    <textarea id="task-description" rows="3" placeholder="Task Description"></textarea>
+
+    <button id="btn-task-save">Save</button>
+
+  </form>
+
+  <!-- esto es pa mostrar lo que podei eliminar y editar -->
+  <ul id="task-container" class="list-group posts"></ul>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+
+</html>
